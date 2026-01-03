@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aathif Jameel PM - AI & Full Stack Developer Portfolio">
+    <title>Aathif Jameel PM | AI Developer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-container">
+            <div class="scan-line"></div>
+            <div class="counter-container">
+                <span class="loader-counter">0</span>
+                <span class="percent">%</span>
+            </div>
+            <div class="loader-text-wrapper">
+                <span class="loader-status">INITIALIZING SYSTEMS</span>
+            </div>
+        </div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- WebGL Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#work" class="mobile-link">Projects</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <div class="main-container">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="logo">
+                <span class="logo-text">AJ<span class="dot">.</span></span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="site-nav">
+                <a href="#about" class="nav-link hover-magnet">About</a>
+                <a href="#skills" class="nav-link hover-magnet">Skills</a>
+                <a href="#experience" class="nav-link hover-magnet">Experience</a>
+                <a href="#work" class="nav-link hover-magnet">Projects</a>
+                <a href="#contact" class="nav-link hover-magnet">Contact</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <div class="mobile-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <div class="hero-text-mask">
+                    <h1 class="hero-title">Aathif Jameel<br>PM</h1>
+                </div>
+                <div class="hero-text-mask">
+                    <p class="subtitle">AI & Full Stack <span class="highlight">Developer</span>. Creating modern
+                        intelligent systems that work in the wild.</p>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary magnet-btn"
+                        onclick="document.querySelector('#work').scrollIntoView()">
+                        <span class="btn-text">View Projects</span>
+                        <div class="btn-fill"></div>
+                    </button>
+                    <button class="btn btn-secondary magnet-btn"
+                        onclick="document.querySelector('#contact').scrollIntoView()">
+                        <span class="btn-text">Contact Me</span>
+                    </button>
+                    <a href="https://rxresu.me/aathifpm123/aathif-jameel-pm" target="_blank"
+                        class="btn btn-secondary magnet-btn"
+                        style="text-decoration:none; display:inline-flex; align-items:center;">
+                        <span class="btn-text">Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual is complex 3D, hidden on mobile via CSS -->
+            <div class="hero-visual-container">
+                <div class="floating-card c-1 parallax-el" data-speed="0.05">
+                    <img src="assets/project_ui.png" alt="UI Element">
+                </div>
+                <div class="floating-card c-2 parallax-el" data-speed="0.1">
+                    <img src="assets/smartwatch.png" alt="Device">
+                </div>
+                <div class="main-visual parallax-el" data-speed="0">
+                    <img src="assets/hero_devices.png" alt="Hero Devices" class="hero-img-3d">
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee-section">
+            <div class="marquee-content">
+                <span>Artificial Intelligence</span> <span class="separator">•</span>
+                <span>Full Stack Dev</span> <span class="separator">•</span>
+                <span>Generative AI</span> <span class="separator">•</span>
+                <span>Machine Learning</span> <span class="separator">•</span>
+                <span>Mobile Apps</span> <span class="separator">•</span>
+                <span>System Design</span> <span class="separator">•</span>
+                <span>Artificial Intelligence</span> <span class="separator">•</span>
+                <span>Full Stack Dev</span> <span class="separator">•</span>
+                <span>Generative AI</span> <span class="separator">•</span>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about-section" id="about" style="padding: 100px 0;">
+            <div class="section-header">
+                <h2 class="reveal-text">About Me</h2>
+                <div class="line-animated"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p style="font-size: 1.1rem; color: #aaa; margin-bottom: 20px; line-height: 1.7;">
+                        I believe technology is meant to create meaningful impact and I choose to build it. From
+                        AI-powered automation to scalable platforms used by thousands, I design, train, and deploy
+                        intelligent systems that don’t just work on paper, they work in the wild.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #aaa; margin-bottom: 20px; line-height: 1.7;">
+                        My toolkit spans the modern AI/ML landscape including neural networks, transformers, NLP,
+                        computer vision, and generative AI. On top of this, I bring strong engineering depth in Python,
+                        Java, and scalable system design.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #aaa; line-height: 1.7;">
+                        Location: <span class="highlight">Chennai, India</span><br>
+                        Languages: <span class="highlight">Urdu, English, Tamil, Hindi</span>
+                    </p>
+                </div>
+                <div class="education-card">
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 20px;">Education</h3>
+                    <div class="edu-item">
+                        <h4 style="color: white; font-size: 1.2rem;">B.Tech (Honours): AI & Data Science</h4>
+                        <p style="color: var(--text-secondary); margin-top: 5px;">Panimalar Engineering College, Chennai
+                        </p>
+                        <p style="color: var(--accent); margin-top: 5px; font-size: 0.9rem;">Expected: 2026</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills" style="padding-bottom: 100px;">
+            <div class="section-header">
+                <h2 class="reveal-text">Technical Arsenal</h2>
+                <div class="line-animated"></div>
+            </div>
+
+            <div class="skills-wrapper">
+
+                <!-- Programming -->
+                <div class="skill-category">
+                    <h3 style="color: var(--accent); margin-bottom: 20px; font-family: var(--font-heading);">Programming
+                    </h3>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Python</span><span>90%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:90%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>JavaScript</span><span>85%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:85%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>TypeScript</span><span>80%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:80%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI/ML -->
+                <div class="skill-category">
+                    <h3 style="color: var(--accent); margin-bottom: 20px; font-family: var(--font-heading);">AI & ML
+                    </h3>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>Gemini
+                                APIs</span><span>90%</span></div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:90%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Transformers</span><span>85%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:85%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>OpenCV</span><span>80%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:80%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web/Mobile -->
+                <div class="skill-category">
+                    <h3 style="color: var(--accent); margin-bottom: 20px; font-family: var(--font-heading);">Web &
+                        Mobile</h3>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>HTML/CSS</span><span>95%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:95%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>React
+                                Native</span><span>85%</span></div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:85%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item" style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span>Flask</span><span>85%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px;">
+                            <div style="width:85%; height:100%; background:white; border-radius:3px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section" id="experience" style="padding-bottom: 100px;">
+            <div class="section-header">
+                <h2 class="reveal-text">Experience</h2>
+                <div class="line-animated"></div>
+            </div>
+
+            <div class="exp-timeline"
+                style="border-left: 1px solid rgba(255,255,255,0.2); margin-left: 20px; padding-left: 40px;">
+                <div class="exp-item" style="margin-bottom: 50px; position:relative;">
+                    <div class="dot"
+                        style="position:absolute; left:-46px; top:5px; width:12px; height:12px; background:var(--accent); border-radius:50%;">
+                    </div>
+                    <h3 style="font-size: 1.8rem; font-family: var(--font-heading);">Full Stack Developer</h3>
+                    <h4 style="color: white; margin-bottom: 10px;">Triblet (Startup) <span
+                            style="color:var(--text-secondary); font-size:0.9rem;">| Nov 2024 - May 2025</span></h4>
+                    <p style="color: var(--text-secondary); max-width: 800px;">Lead developer of Triblet, a sports
+                        tournament mobile app. Architected real-time score updates, automated leaderboards, and managed
+                        the entire frontend/backend stack for performance and scalability.</p>
+                </div>
+
+                <div class="exp-item" style="margin-bottom: 50px; position:relative;">
+                    <div class="dot"
+                        style="position:absolute; left:-46px; top:5px; width:12px; height:12px; background:var(--accent); border-radius:50%;">
+                    </div>
+                    <h3 style="font-size: 1.8rem; font-family: var(--font-heading);">Machine Learning Intern</h3>
+                    <h4 style="color: white; margin-bottom: 10px;">CODSOFT <span
+                            style="color:var(--text-secondary); font-size:0.9rem;">| May 2023 - July 2023</span></h4>
+                    <p style="color: var(--text-secondary); max-width: 800px;">Developed machine learning models for
+                        fraud detection and financial transaction security.</p>
+                </div>
+
+                <div class="exp-item" style="margin-bottom: 50px; position:relative;">
+                    <div class="dot"
+                        style="position:absolute; left:-46px; top:5px; width:12px; height:12px; background:var(--accent); border-radius:50%;">
+                    </div>
+                    <h3 style="font-size: 1.8rem; font-family: var(--font-heading);">Hackathons & Leadership</h3>
+                    <h4 style="color: white; margin-bottom: 10px;">National Level <span
+                            style="color:var(--text-secondary); font-size:0.9rem;">| 2023 - 2025</span></h4>
+                    <ul style="color: var(--text-secondary); list-style: none; padding: 0;">
+                        <li>• Ranked #1 in TN Region at BitNBuilt 24 (Finalist Mumbai)</li>
+                        <li>• Finalist in 100x Engineers AI Agent Hackathon (Bangalore)</li>
+                        <li>• Participant in CODECRAFT 24 and SSN Hackathons</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="work">
+            <div class="section-header">
+                <h2 class="reveal-text">Selected Projects</h2>
+                <div class="line-animated"></div>
+            </div>
+
+            <div class="projects-grid-mosaic">
+                <!-- Agent Sterling -->
+                <div class="project-item item-large glow-hover" data-title="Agent Sterling"
+                    data-desc="An advanced AI Social Media Assistant designed to automate engagement and content creation. Built with Python and FastAPI, it leverages Gemini Pro to generate high-quality responses and content strategies, helping users maintain an active and impactful social media presence."
+                    data-tech='["Python", "FastAPI", "Gemini Pro", "Docker"]'
+                    data-images='["assets/hero_devices.png", "assets/project_ui.png"]'
+                    data-live="https://sterling.aathifpm.xyz" data-code="https://github.com/aathifpm/Agent_Sterling">
+                    <div class="p-img-container">
+                        <img src="assets/hero_devices.png" alt="Agent Sterling">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title-row">
+                            <h3>Agent Sterling</h3>
+                            <div class="links">
+                                <a href="https://sterling.aathifpm.xyz" target="_blank" title="Live Demo"><i
+                                        data-feather="external-link"></i></a>
+                                <a href="https://github.com/aathifpm/Agent_Sterling" target="_blank" title="Code"><i
+                                        data-feather="github"></i></a>
+                            </div>
+                        </div>
+                        <p>AI Social Media Assistant (Python, FastAPI, Gemini Pro)</p>
+                    </div>
+                </div>
+
+                <!-- NeuraCare -->
+                <div class="project-item item-tall glow-hover" data-title="NeuraCare AI"
+                    data-desc="A privacy-focused Virtual Health Assistant built with React Native. It utilizes Federated Learning to train models locally on user devices, ensuring sensitive health data never leaves the phone while providing personalized health insights and monitoring."
+                    data-tech='["React Native", "Federated Learning", "TensorFlow.js", "Node.js"]'
+                    data-images='["assets/smartwatch.png"]' data-live=""
+                    data-code="https://github.com/aathifpm/NeuraCare">
+                    <div class="p-img-container">
+                        <img src="assets/smartwatch.png" alt="NeuraCare">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title-row">
+                            <h3>NeuraCare AI</h3>
+                            <div class="links">
+                                <a href="https://github.com/aathifpm/NeuraCare" target="_blank" title="Code"><i
+                                        data-feather="github"></i></a>
+                            </div>
+                        </div>
+                        <p>Virtual Health Assistant (React Native, Federated Learning)</p>
+                    </div>
+                </div>
+
+                <!-- USIP -->
+                <div class="project-item item-standard glow-hover" data-title="Unified Students Insight Platform"
+                    data-desc="A comprehensive feedback platform serving over 10,000 users. It streamlines the feedback process for educational institutions, offering real-time analytics and insights to improve student satisfaction and institutional performance."
+                    data-tech='["React", "Node.js", "MongoDB", "Chart.js"]'
+                    data-images='["assets/project_ui.png", "assets/smartwatch.png"]'
+                    data-live="https://ads-panimalar.in" data-code="https://github.com/aathifpm/Feedback_system">
+                    <div class="p-img-container">
+                        <img src="assets/project_ui.png" alt="College Feedback System">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title-row">
+                            <h3>Unified Students Insight</h3>
+                            <div class="links">
+                                <a href="https://ads-panimalar.in" target="_blank" title="Live Site"><i
+                                        data-feather="external-link"></i></a>
+                                <a href="https://youtu.be/GPceUI_YHow" target="_blank" title="Video"><i
+                                        data-feather="youtube"></i></a>
+                                <a href="https://github.com/aathifpm/Feedback_system" target="_blank" title="Code"><i
+                                        data-feather="github"></i></a>
+                            </div>
+                        </div>
+                        <p>Feedback Platform (10k+ Users)</p>
+                    </div>
+                </div>
+
+                <!-- MLB Storyteller -->
+                <div class="project-item item-standard glow-hover" data-title="MLB Storyteller"
+                    data-desc="An automated sports narrative generator that creates compelling stories from MLB game data. Hosted on Google Cloud Platform and containerized with Docker, it provides real-time game summaries and highlights for baseball fans."
+                    data-tech='["Python", "GCP", "Docker", "NLP"]' data-images='["assets/project_abstract.png"]'
+                    data-live="" data-code="https://github.com/aathifpm/MLB_GCP">
+                    <div class="p-img-container">
+                        <img src="assets/project_abstract.png" alt="MLB Storyteller">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title-row">
+                            <h3>MLB Storyteller</h3>
+                            <div class="links">
+                                <a href="https://github.com/aathifpm/MLB_GCP" target="_blank" title="Code"><i
+                                        data-feather="github"></i></a>
+                            </div>
+                        </div>
+                        <p>AI Baseball Narratives (GCP, Docker)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Projects Grid -->
+            <div class="more-projects">
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>Jarvis AI</h4>
+                        <a href="https://github.com/aathifpm/Jarvis" target="_blank"><i data-feather="github"></i></a>
+                    </div>
+                    <p>Voice recognition & automation assistant.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>AI Translator Hub</h4>
+                        <a href="https://github.com/aathifpm/AI_translator_Hub" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>Web-based translation with accurate models.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>Expense Tracker</h4>
+                        <a href="https://github.com/aathifpm/Expense_Tracker" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>Smart finance management with AI insights.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>Resume Analyzer</h4>
+                        <a href="https://github.com/aathifpm/ResumeAnalyzer" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>AI extraction of key resume information.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>SportsFiesta</h4>
+                        <a href="https://github.com/aathifpm/SportsFiesta" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>Real-time sports information platform.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>FestFusion</h4>
+                        <a href="https://github.com/aathifpm/Festfusion" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>Comprehensive event management system.</p>
+                </div>
+
+                <div class="mini-card project-anim">
+                    <div class="mini-header">
+                        <h4>Insurance Analytics</h4>
+                        <a href="https://github.com/aathifpm/insurance-analytics" target="_blank"><i
+                                data-feather="github"></i></a>
+                    </div>
+                    <p>Fraud detection & claims management.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="certs-section">
+            <div class="section-header">
+                <h2 class="reveal-text">Certifications</h2>
+                <div class="line-animated"></div>
+            </div>
+            <div class="certs-list">
+                <div class="cert-pill">Oracle Cloud Gen AI</div>
+                <div class="cert-pill">Infosys Generative AI</div>
+                <div class="cert-pill">NASSCOM Cybersecurity</div>
+                <div class="cert-pill">GPT-3 for Developers</div>
+                <div class="cert-pill">Intro to Data Science</div>
+            </div>
+        </section>
+
+        <!-- Interactive Footer -->
+        <footer class="big-footer" id="contact">
+            <div class="footer-cta">
+                <h2 class="reveal-text">Let's build <br>the future.</h2>
+                <div class="contact-details"
+                    style="margin-top: 40px; margin-bottom: 40px; font-size: 1.2rem; color: #aaa;">
+                    <p>aathifpm123@gmail.com</p>
+                    <p>+91 8608170780</p>
+                    <p>Chennai, India</p>
+                </div>
+                <a href="mailto:aathifpm123@gmail.com" style="text-decoration:none;">
+                    <div class="cta-circle magnet-btn">
+                        <span>Say<br>Hello</span>
+                    </div>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/aathif-jameel-pm" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/aathifpm" target="_blank">GitHub</a>
+                    <a href="mailto:aathifpm123@gmail.com">Email</a>
+                </div>
+                <p>&copy; 2026 Aathif Jameel PM.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content" data-lenis-prevent>
+            <button class="modal-close">&times;</button>
+
+            <div class="modal-gallery-container">
+                <div class="modal-gallery">
+                    <div class="gallery-track" id="gallery-track">
+                        <!-- Images injected here -->
+                    </div>
+                </div>
+                <button class="gallery-nav prev" id="gallery-prev">&#10094;</button>
+                <button class="gallery-nav next" id="gallery-next">&#10095;</button>
+            </div>
+
+            <div class="modal-info">
+                <h2 id="modal-title">Project Title</h2>
+                <div class="modal-tech-stack" id="modal-tech">
+                    <!-- Tech tags injected here -->
+                </div>
+                <p id="modal-desc">Project description goes here...</p>
+                <div class="modal-links">
+                    <a href="#" target="_blank" class="btn btn-primary" id="modal-live">Live Demo</a>
+                    <a href="#" target="_blank" class="btn btn-secondary" id="modal-code">View Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
